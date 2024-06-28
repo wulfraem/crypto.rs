@@ -186,7 +186,7 @@ impl Ord for I384<BigEndian, U8Repr> {
         // MSU8s are equal. If they are not equal, then an early return will be triggered.
 
         const NEGBIT: u8 = 0x80;
-        const UMAX: u8 = core::u8::MAX;
+        const UMAX: u8 = u8::MAX;
         let numbers_negative = match zipped_iter.next() {
             // Case 1: both numbers are negative, s is less.
             Some((s @ NEGBIT..=UMAX, o @ NEGBIT..=UMAX)) if s > o => return Greater,
@@ -408,7 +408,7 @@ impl Ord for I384<BigEndian, U32Repr> {
         // MSU32s are equal. If they are not equal, then an early return will be triggered.
 
         const NEGBIT: u32 = 0x8000_0000;
-        const UMAX: u32 = core::u32::MAX;
+        const UMAX: u32 = u32::MAX;
         let numbers_negative = match zipped_iter.next() {
             // Case 1: both numbers are negative, s is less.
             Some((s @ NEGBIT..=UMAX, o @ NEGBIT..=UMAX)) if s > o => return Greater,
@@ -504,7 +504,7 @@ impl Ord for I384<LittleEndian, U8Repr> {
         // MSU8s are equal. If they are not equal, then an early return will be triggered.
 
         const NEGBIT: u8 = 0x80;
-        const UMAX: u8 = core::u8::MAX;
+        const UMAX: u8 = u8::MAX;
         let numbers_negative = match zipped_iter.next() {
             // Case 1: both numbers are negative, s is less.
             Some((s @ NEGBIT..=UMAX, o @ NEGBIT..=UMAX)) if s > o => return Greater,
@@ -734,7 +734,7 @@ impl Ord for I384<LittleEndian, U32Repr> {
         // MSU32s are equal. If they are not equal, then an early return will be triggered.
 
         const NEGBIT: u32 = 0x8000_0000;
-        const UMAX: u32 = core::u32::MAX;
+        const UMAX: u32 = u32::MAX;
 
         let numbers_negative = match zipped_iter.next() {
             // Case 1: both numbers are negative, s is less.

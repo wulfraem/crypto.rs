@@ -107,8 +107,8 @@ impl TryFrom<char> for Tryte {
     fn try_from(c: char) -> Result<Self, Self::Error> {
         match c {
             '9' => Ok(Tryte::Nine),
-            'N'..='Z' => Ok(unsafe { core::mem::transmute((c as u8 - b'N') as i8 - 13) }),
-            'A'..='M' => Ok(unsafe { core::mem::transmute((c as u8 - b'A') as i8 + 1) }),
+            'N'..='Z' => Ok(unsafe { core::mem::transmute::<i8, Self>((c as u8 - b'N') as i8 - 13) }),
+            'A'..='M' => Ok(unsafe { core::mem::transmute::<i8, Self>((c as u8 - b'A') as i8 + 1) }),
             _ => Err(Error::InvalidRepr),
         }
     }
@@ -119,7 +119,7 @@ impl TryFrom<i8> for Tryte {
 
     fn try_from(x: i8) -> Result<Self, Self::Error> {
         match x {
-            -13..=13 => Ok(unsafe { core::mem::transmute(x) }),
+            -13..=13 => Ok(unsafe { core::mem::transmute::<i8, Self>(x) }),
             _ => Err(Error::InvalidRepr),
         }
     }

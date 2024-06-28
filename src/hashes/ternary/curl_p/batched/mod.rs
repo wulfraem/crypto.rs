@@ -21,7 +21,7 @@ use crate::{
 
 /// The number of inputs that can be processed in a single batch.
 pub const BATCH_SIZE: usize = 8 * core::mem::size_of::<usize>();
-const HIGH_BITS: usize = usize::max_value();
+const HIGH_BITS: usize = usize::MAX;
 const NUM_ROUNDS: usize = 81;
 
 /// A hasher that can process several inputs at the same time in batches.
