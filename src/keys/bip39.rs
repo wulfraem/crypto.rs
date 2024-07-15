@@ -60,7 +60,7 @@ impl<'a> TryFrom<&'a str> for &'a MnemonicRef {
     fn try_from(mnemonic_str: &'a str) -> Result<Self, Error> {
         if is_nfkd(mnemonic_str) {
             // SAFETY: MnemonicRef is represented exactly as str due to repr(transparent)
-            Ok(unsafe { core::mem::transmute(mnemonic_str) })
+            Ok(unsafe { core::mem::transmute::<&str, Self>(mnemonic_str) })
         } else {
             Err(Error::UnnormalizedMnemonic)
         }
@@ -196,7 +196,7 @@ impl<'a> TryFrom<&'a str> for &'a PassphraseRef {
     fn try_from(passphrase_str: &'a str) -> Result<Self, Error> {
         if is_nfkd(passphrase_str) {
             // SAFETY: PassphraseRef is represented exactly as str due to repr(transparent)
-            Ok(unsafe { core::mem::transmute(passphrase_str) })
+            Ok(unsafe { core::mem::transmute::<&str, Self>(passphrase_str) })
         } else {
             Err(Error::UnnormalizedPassphrase)
         }
